@@ -24,7 +24,13 @@ const AllPodcasts = () => {
         {podcasts.length > 0 ? (
           podcasts.map((items) => (
             <div key={items._id}>
-              <PodcastCard items={items} />
+              <PodcastCard
+                title={items.title}
+                description={items.description}
+                frontImage={items.frontImage}
+                audioFile={items.audioFile}
+                category={items.category}
+              />
             </div>
           ))
         ) : (
