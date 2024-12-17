@@ -29,13 +29,11 @@ const Navbar = () => {
       <div className="flex items-center justify-between">
         <div className="logo brand-name w-2/6 flex items-center gap-4">
           <img
-            src="https://cdn-icons-png.flaticon.com/128/9043/9043096.png"
+            src="https://www.shutterstock.com/image-vector/podcast-icon-vector-isolated-on-600nw-2368666423.jpg"
             alt="podcaster"
-            className="h-12"
+            className="h-16"
           />
-          <Link to="/" className="text-2xl font-bold">
-            Podcaster
-          </Link>
+          <Link to="/" className="text-2xl font-bold text-green-900 hover:text-green-700 transition-all">Podcaster</Link>
         </div>
         <div className="hidden w-2/6 lg:flex items-center justify-center">
           {navLinks.map((items, i) => (
