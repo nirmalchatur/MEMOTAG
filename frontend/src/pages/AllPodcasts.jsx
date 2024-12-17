@@ -1,26 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useState } from "react";
 import PodcastCard from "../components/PodcastCard/PodcastCard";
+
 const AllPodcasts = () => {
-  const [Podcasts, setPodcasts] = useState();
+  const [podcasts, setPodcasts] = useState([]); // Initialize with an empty array
+
   useEffect(() => {
-    const fetch = async () => {
-      const res = await axios.get(`${window.location.origin}/api/v1/get-podcasts`);
-      setPodcasts(res.data.data);
+    const fetchPodcasts = async () => {
+      try {
+        const res = await axios.get("/api/v1/get-podcasts");
+        setPodcasts(res.data?.data || []); // Safely access data
+      } catch (error) {
+        console.error("Error fetching podcasts:", error);
+        setPodcasts([]); // Fallback to empty array on error
+      }
     };
-    fetch();
+    fetchPodcasts();
   }, []);
 
   return (
     <div>
       <div className="w-full px-4 lg:px-12 py-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {Podcasts &&
-          Podcasts.map((items, i) => (
-            <div key={i}>
-              <PodcastCard items={items} />{" "}
+        {podcasts.length > 0 ? (
+          podcasts.map((items) => (
+            <div key={items._id}>
+              <PodcastCard items={items} />
             </div>
-          ))}
+          ))
+        ) : (
+          <div className="col-span-full text-center text-gray-500 text-lg">
+            No podcasts available.
+          </div>
+        )}
       </div>
     </div>
   );

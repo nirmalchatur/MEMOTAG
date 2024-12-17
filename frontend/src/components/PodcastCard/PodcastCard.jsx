@@ -2,21 +2,20 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { playerActions } from "../../store/player";
+
 const PodcastCard = ({ items }) => {
-  const disaptch = useDispatch();
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   const handlePlay = (e) => {
     if (isLoggedIn) {
-      e.preventDefault();
-      disaptch(playerActions.setDiv());
-      disaptch(
-        playerActions.changeImage(`${window.location.origin}/${items.frontImage}`)
-      );
-      disaptch(
-        playerActions.changeSong(`${window.location.origin}/${items.audioFile}`)
-      );
+      e.preventDefault(); // Prevent default behavior of the link
+      dispatch(playerActions.setDiv());
+      dispatch(playerActions.changeImage(`${window.location.origin}/${items.frontImage}`));
+      dispatch(playerActions.changeSong(`${window.location.origin}/${items.audioFile}`));
     }
   };
+
   return (
     <div>
       <Link
@@ -26,11 +25,12 @@ const PodcastCard = ({ items }) => {
         <div>
           <img
             src={`${window.location.origin}/${items.frontImage}`}
+            alt={items.title}
             className="rounded size-[42vh] object-cover"
           />
         </div>
         <div className="mt-2 text-xl font-bold">{items.title.slice(0, 20)}</div>
-        <div className="mt-2 leading-5 text-slate-500 ">
+        <div className="mt-2 leading-5 text-slate-500">
           {items.description.slice(0, 50)}
         </div>
         <div className="mt-2 bg-orange-100 text-orange-700 border border-orange-700 rounded-full px-4 py-2 text-center">
