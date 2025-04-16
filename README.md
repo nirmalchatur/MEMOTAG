@@ -1,14 +1,29 @@
-Create And Listen Podcast
-A Project Report
-submitted in partial fulfillment of the requirements
-of
-Web Technology
-by
-Ankit Kumar,
-ankit.kumar@mitaoe.ac.in
-Ankit Kumar,
-ankitkumar@mitaoe.ac.in
-Nirmal Chaturvedi,
-nirmal.chaturvedi@mitaoe.ac.in
-Avdhut Tad,
-avdhut.tad@mitaoe.ac.in
+# 🎙️ Podcaster
+
+A full-stack MERN web application that allows users to **create, host, and listen to podcasts**. Built with **MongoDB, Express.js, React.js, and Node.js**, this app also supports user authentication, podcast discovery, playback, and content management.
+
+---
+
+## 🚀 Features
+
+- 🎧 Create and host your own podcasts
+- 🔍 Discover podcasts by category or tags
+- 🔐 User registration and login (JWT-based)
+- 👤 Profile management
+- 📦 Audio file uploads
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend | Backend | Database | Other |
+|---------|---------|----------|-------|
+| React.js | Node.js | MongoDB | Docker |
+| Tailwind CSS | Express.js | Mongoose | JWT Auth |
+| React Router | bcrypt.js | Multer | Google Gemini API |
+| Axios | | | People Data Labs API |
+
+---
+
+## 
+
