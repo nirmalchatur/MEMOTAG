@@ -20,8 +20,7 @@ A full-stack MERN web application that allows users to **create, host, and liste
 |---------|---------|----------|-------|
 | React.js | Node.js | MongoDB | Docker |
 | Tailwind CSS | Express.js | Mongoose | JWT Auth |
-| React Router | bcrypt.js | Multer | Google Gemini API |
-| Axios | | | People Data Labs API |
+| React Router | bcrypt.js | Multer |
 
 ---
 
