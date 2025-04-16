@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🎙️ Podcaster
 
 A full-stack MERN web application that allows users to **create, host, and listen to podcasts**. Built with **MongoDB, Express.js, React.js, and Node.js**, this app also supports user authentication, podcast discovery, playback, and content management.
@@ -26,3 +27,6 @@ A full-stack MERN web application that allows users to **create, host, and liste
 
 ## 
 
+=======
+# MEMOTAG
+>>>>>>> 00142d4f6ca393eee29a02175eadcfd7e2b64d16
