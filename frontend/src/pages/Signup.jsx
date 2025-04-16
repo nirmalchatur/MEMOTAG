@@ -38,7 +38,7 @@ const Signup = () => {
           <ToastContainer position="top-center" draggable />
           <div className="w-4/6 md:w-3/6 lg:w-2/6  flex flex-col items-center justify-center ">
             <Link to="/" className="text-2xl font-bold ">
-              PODCASTER
+              Memotag
             </Link>
             <div className="mt-6 w-full">
               <div className="w-full flex flex-col">

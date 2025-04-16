@@ -3,14 +3,22 @@ import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import ErrorPage from "./ErrorPage";
 import Header from "../components/Profile/Header";
-import YourPodcasts from "../components/Profile/YourPodcasts";
 
 const Profile = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const [isLoading, setIsLoading] = useState(true);
+  const [memories, setMemories] = useState([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000);
+    const timer = setTimeout(() => {
+      // Simulate loading memories data
+      setMemories([
+        { id: 1, title: "Beach Vacation", date: "2023-07-15", tags: ["travel", "family"] },
+        { id: 2, title: "Graduation Day", date: "2023-05-20", tags: ["achievement", "school"] },
+        { id: 3, title: "Birthday Party", date: "2023-03-10", tags: ["celebration", "friends"] }
+      ]);
+      setIsLoading(false);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -76,25 +84,53 @@ const Profile = () => {
                   <h3 className="text-lg font-medium text-gray-900 mb-4">Your Stats</h3>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-sm text-gray-500">Total Podcasts</p>
-                      <p className="text-2xl font-bold">24</p>
+                      <p className="text-sm text-gray-500">Total Memories</p>
+                      <p className="text-2xl font-bold">{memories.length}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Total Listeners</p>
-                      <p className="text-2xl font-bold">1,234</p>
+                      <p className="text-sm text-gray-500">Tags Created</p>
+                      <p className="text-2xl font-bold">
+                        {[...new Set(memories.flatMap(memory => memory.tags))].length}
+                      </p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500">Subscribers</p>
-                      <p className="text-2xl font-bold">567</p>
+                      <p className="text-sm text-gray-500">Memory Streak</p>
+                      <p className="text-2xl font-bold">15 days</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Podcasts Section */}
+              {/* Memories Section - Implemented directly */}
               <div className="lg:col-span-2">
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                  <YourPodcasts />
+                  <div className="p-6">
+                    <h2 className="text-xl font-bold text-gray-800 mb-6">Your Memories</h2>
+                    <div className="space-y-4">
+                      {memories.map(memory => (
+                        <motion.div
+                          key={memory.id}
+                          whileHover={{ scale: 1.02 }}
+                          className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex justify-between items-start">
+                            <h3 className="font-medium text-lg">{memory.title}</h3>
+                            <span className="text-sm text-gray-500">{memory.date}</span>
+                          </div>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {memory.tags.map(tag => (
+                              <span 
+                                key={tag}
+                                className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
